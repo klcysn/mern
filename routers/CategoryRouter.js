@@ -11,6 +11,8 @@ router.post("/update", validations.categoryValidation, CategoryController.update
 
 router.get("/deleteCategory", CategoryController.deleteCategory)
 
+router.get("/destroyCategory", CategoryController.destroyCategory)
+
 router.get("/", CategoryController.getCategories)
 
 module.exports = router
