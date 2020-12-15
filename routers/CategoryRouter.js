@@ -8,7 +8,7 @@ router.get("/getCategory/:id", CategoryController.getCategory)
 
 router.post("/update", CategoryController.updateCategory)
 
-router.post("/deleteCategory", CategoryController.deleteCategory)
+router.get("/deleteCategory", CategoryController.deleteCategory)
 
 router.get("/", CategoryController.getCategories)
 
