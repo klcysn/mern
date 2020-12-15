@@ -31,7 +31,17 @@ exports.getCategory = async (req, res) => {
     }
 }
 exports.updateCategory = async (req, res) => {
-
+    try {
+        const validationErr = validationResult(req)
+        if(validationErr?.errors?.length > 0){
+            return res.status(400).json({errors: validationErr.array()})
+        }
+        const updatedCategory = await Category.findOneAndUpdate({_id: req.params.id}, {...req.body, status: "Updated", updatedDate: Date.now()}, {new: true, runValidators: true})
+        return res.status(200).json(updatedCategory)
+    } catch (err) {
+        return res.status(500).json({errors: [{message: err.message}]})
+        
+    }
 }
 exports.deleteCategory = async (req, res) => {
 
